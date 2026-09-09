@@ -11,7 +11,7 @@ Add the programs you need for a stream, pick a profile, and let OBS bring them u
   <img width="462" height="652" alt="Kaleido Launcher" src="https://github.com/user-attachments/assets/7e9ac50b-f988-4ead-a79e-74a2ba2939ba" />
 </p>
 
-- Version **1.0.6**
+- Version **1.0.7**
 - Windows x64
 - Designed for **OBS Studio 32.2.2**
 

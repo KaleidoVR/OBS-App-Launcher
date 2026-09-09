@@ -449,8 +449,9 @@ class KaleidoLauncherWindow : public QDialog {
 public:
     KaleidoLauncherWindow(QWidget *parent = nullptr) : QDialog(parent) {
         setWindowTitle("Kaleido Launcher");
-        setMinimumSize(400, 640);
-        resize(460, 760);
+        setFixedSize(460, 760);
+        setWindowFlags(windowFlags() & ~Qt::WindowMaximizeButtonHint);
+        setSizeGripEnabled(false);
         
         QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->setSpacing(14);
