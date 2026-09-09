@@ -8,7 +8,7 @@ An OBS Studio plugin that starts and stops the apps you use for streaming. Confi
 
 Add the programs you need for a stream, pick a profile, and let OBS bring them up when it starts. You can launch or close them by hand from the same window, save the setup with a scene collection, and export a JSON backup if you move machines.
 <p align="center">
-  <img width="462" height="652" alt="Kaleido Launcher" src="https://github.com/user-attachments/assets/7e9ac50b-f988-4ead-a79e-74a2ba2939ba" />
+  <img width="462" height="792" alt="image" src="https://github.com/user-attachments/assets/3b54200e-439d-49ed-b2a8-c3aff30c633d" />
 </p>
 
 - Version **1.0.7**
