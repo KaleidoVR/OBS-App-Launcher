@@ -1,5 +1,9 @@
 # Kaleido Launcher
 
+<p align="center">
+  <img src="Unity Organizer Tool/Editor/Icons/Kali_Logo.png" alt="KaleidoVR" width="300">
+</p>
+
 An OBS Studio plugin that starts and stops the apps you use for streaming. Configure the list once, then launch everything with OBS — or from **KaleidoVR → App Autostarter** in the top menu bar.
 
 Add the programs you need for a stream, pick a profile, and let OBS bring them up when it starts. You can launch or close them by hand from the same window, save the setup with a scene collection, and export a JSON backup if you move machines.
