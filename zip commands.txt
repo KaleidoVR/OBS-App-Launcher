@@ -1,0 +1,4 @@
+cmake --preset windows-x64
+cmake --build build_x64 --config Release
+cd build_x64
+cpack -G "NSIS;ZIP"

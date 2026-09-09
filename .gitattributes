@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Dependencies are downloaded by the build (see buildspec.json) rather than committed,
+# so no Git LFS rule is needed for .deps/.
+*.zip filter=lfs diff=lfs merge=lfs -text
