@@ -49,7 +49,11 @@ runs:
           if ! git cat-file -e "${GIT_BASE_REF}" &> /dev/null; then
             echo "::warning::Provided base reference ${GIT_BASE_REF} is invalid"
             if [[ "${USE_FALLBACK}" == 'true' ]]; then
-              GIT_BASE_REF='HEAD~1'
+              if git rev-parse --verify --quiet HEAD~1 >/dev/null; then
+                GIT_BASE_REF='HEAD~1'
+              else
+                GIT_BASE_REF='4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+              fi
             fi
           fi
         else
@@ -57,7 +61,11 @@ runs:
             GITHUB_REF_BEFORE='4b825dc642cb6eb9a060e54bf8d69288fbee4904'
           fi
 
-          GIT_BASE_REF='HEAD~1'
+          if git rev-parse --verify --quiet HEAD~1 >/dev/null; then
+            GIT_BASE_REF='HEAD~1'
+          else
+            GIT_BASE_REF='4b825dc642cb6eb9a060e54bf8d69288fbee4904'
+          fi
           case "${GITHUB_EVENT_NAME}" in
             pull_request) GIT_BASE_REF="origin/${GITHUB_BASE_REF}" ;;
             push) if [[ "${GITHUB_EVENT_FORCED}" != 'true' ]]; then GIT_BASE_REF="${GITHUB_REF_BEFORE}"; fi ;;
