@@ -23,8 +23,20 @@
 #include <mutex>
 #include <thread>
 
+#include "plugin-support.h"
+
 OBS_DECLARE_MODULE()
 OBS_MODULE_AUTHOR("KaleidoVR")
+
+MODULE_EXPORT const char *obs_module_name(void)
+{
+    return "Kaleido Launcher";
+}
+
+MODULE_EXPORT const char *obs_module_description(void)
+{
+    return "Launch and close streaming apps with OBS.";
+}
 
 // Global runtime registry pointer managed natively by the active OBS Scene Collection
 static obs_data_t *plugin_settings = nullptr;
@@ -983,6 +995,8 @@ static void on_obs_frontend_event(enum obs_frontend_event event, void *) {
 }
 
 bool obs_module_load(void) {
+    blog(LOG_INFO, "[Kaleido Launcher] loaded version %s", PLUGIN_VERSION);
+
     plugin_settings = obs_data_create();
     apply_default_settings(plugin_settings);
 
