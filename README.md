@@ -11,7 +11,6 @@ Add the programs you need for a stream, pick a profile, and let OBS bring them u
   <img width="462" height="792" alt="image" src="https://github.com/user-attachments/assets/3b54200e-439d-49ed-b2a8-c3aff30c633d" />
 </p>
 
-- Version **1.0.7**
 - Windows x64
 - Designed for **OBS Studio 32.2.2**
 
