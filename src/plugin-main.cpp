@@ -78,6 +78,7 @@ static void apply_default_settings(obs_data_t *settings)
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QLabel>
+#include <QPixmap>
 #include <QFileDialog>
 #include <QInputDialog>
 #include <QMessageBox>
@@ -448,12 +449,28 @@ class KaleidoLauncherWindow : public QDialog {
 public:
     KaleidoLauncherWindow(QWidget *parent = nullptr) : QDialog(parent) {
         setWindowTitle("Kaleido Launcher");
-        setMinimumSize(400, 500);
-        resize(460, 620);
+        setMinimumSize(400, 640);
+        resize(460, 760);
         
         QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->setSpacing(14);
         mainLayout->setContentsMargins(18, 18, 18, 18);
+
+        QPixmap logo(":/kaleido/Kali_Logo.png");
+        if (!logo.isNull()) {
+            QLabel *logoLabel = new QLabel(this);
+            const qreal dpr = devicePixelRatioF();
+            QPixmap scaled = logo.scaled(
+                qRound(320 * dpr),
+                qRound(200 * dpr),
+                Qt::KeepAspectRatio,
+                Qt::SmoothTransformation);
+            scaled.setDevicePixelRatio(dpr);
+            logoLabel->setPixmap(scaled);
+            logoLabel->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+            logoLabel->setMinimumHeight(160);
+            mainLayout->addWidget(logoLabel);
+        }
 
         enableAutoStartCheck = new QCheckBox("Enable Automatic Startup", this);
         enableAutoStartCheck->setStyleSheet("font-weight: bold; font-size: 12px; color: #1588e6;");

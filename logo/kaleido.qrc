@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/kaleido">
+        <file alias="Kali_Logo.png">Kali_Logo.png</file>
+    </qresource>
+</RCC>
