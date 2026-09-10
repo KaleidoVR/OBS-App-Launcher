@@ -16,9 +16,9 @@ Add the programs you need for a stream, pick a profile, and let OBS bring them u
 
 ## Install
 
-1. Download the latest installer or ZIP from [Releases](https://github.com/KaleidoVR/Kaleido-Launcher/releases/latest).
-2. **Installer** — run [KaleidoLauncher_Installer.exe](https://github.com/KaleidoVR/Kaleido-Launcher/releases/latest). It installs into your 64-bit OBS folder (`C:\Program Files\obs-studio`).
-3. **ZIP** — extract [kaleido-launcher-win64.zip](https://github.com/KaleidoVR/Kaleido-Launcher/releases/latest) over that same OBS folder. The archive opens at `obs-plugins`.
+1. Download the latest installer or ZIP from [Releases](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest).
+2. **Installer** — run [KaleidoLauncher_Installer.exe](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest). It installs into your 64-bit OBS folder (`C:\Program Files\obs-studio`).
+3. **ZIP** — extract [kaleido-launcher-win64.zip](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest) over that same OBS folder. The archive opens at `obs-plugins`.
 4. Restart OBS, then open **KaleidoVR → App Autostarter** in the top menu bar.
 
 A later installer upgrades the existing Apps & Features entry instead of adding a second one.
