@@ -1,7 +1,7 @@
 # Kaleido Launcher
 
 <p align="center">
-  <img src="https://assets.kalivr.com/Kali-Logo/Kali_Logo.png" alt="KaleidoVR" width="300">
+  <img src="logo/Kali_Logo.png" alt="KaleidoVR" width="300">
 </p>
 
 An OBS Studio plugin that starts and stops the apps you use for streaming. Configure the list once, then launch everything with OBS — or from **KaleidoVR → App Autostarter** in the top menu bar.
