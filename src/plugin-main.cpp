@@ -755,7 +755,9 @@ private:
         mainLayout->addLayout(footerButtons);
 
         QLabel *creditsLabel = new QLabel(this);
-        creditsLabel->setText("Kaleido Launcher — <a href=\"https://kalivr.com\" style=\"color: #61afef; text-decoration: none;\">https://kalivr.com</a>");
+        creditsLabel->setText(
+            QString("Kaleido Launcher %1 — <a href=\"https://kalivr.com\" style=\"color: #61afef; text-decoration: none;\">https://kalivr.com</a>")
+                .arg(PLUGIN_VERSION));
         creditsLabel->setOpenExternalLinks(true);
         creditsLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
         creditsLabel->setStyleSheet("color: #666; font-size: 10px; font-style: italic;");
