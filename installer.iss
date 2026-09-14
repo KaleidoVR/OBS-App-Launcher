@@ -49,60 +49,6 @@ Source: "build_x64\Release\kaleido-launcher.pdb"; DestDir: "{app}\obs-plugins\64
 Name: "{group}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"
 
 [Code]
-function SplitUninstallCommand(const UninstallString: string; var Path, Args: string): Boolean;
-var
-  S: string;
-  P: Integer;
-begin
-  Result := False;
-  Path := '';
-  Args := '';
-  S := Trim(UninstallString);
-  if S = '' then
-    Exit;
-
-  if S[1] = '"' then
-  begin
-    Delete(S, 1, 1);
-    P := Pos('"', S);
-    if P = 0 then
-      Exit;
-    Path := Copy(S, 1, P - 1);
-    Args := Trim(Copy(S, P + 1, MaxInt));
-  end
-  else
-  begin
-    P := Pos(' ', S);
-    if P = 0 then
-      Path := S
-    else
-    begin
-      Path := Copy(S, 1, P - 1);
-      Args := Trim(Copy(S, P + 1, MaxInt));
-    end;
-  end;
-
-  Result := Path <> '';
-end;
-
-procedure SilentUninstall(const UninstallString: string);
-var
-  Path, Args: string;
-  ResultCode: Integer;
-begin
-  if not SplitUninstallCommand(UninstallString, Path, Args) then
-    Exit;
-  if Pos('/S', Args) = 0 then
-  begin
-    if Args = '' then
-      Args := '/S'
-    else
-      Args := Args + ' /S';
-  end;
-  if FileExists(Path) then
-    Exec(Path, Args, '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-end;
-
 function IsCPackNsisDuplicate(const SubKeyName, DisplayName: string): Boolean;
 var
   LowerName, LowerDisplay: string;
@@ -130,7 +76,7 @@ procedure RemoveDuplicateLauncherEntries(RootKey: Integer);
 var
   Names: TArrayOfString;
   I: Integer;
-  Key, DisplayName, UninstallString: string;
+  Key, DisplayName: string;
 begin
   if not RegGetSubkeyNames(RootKey, 'Software\Microsoft\Windows\CurrentVersion\Uninstall', Names) then
     Exit;
