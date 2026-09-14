@@ -29,8 +29,9 @@ UsePreviousAppDir=yes
 DirExistsWarning=no
 CloseApplications=yes
 SetupIconFile=logo\kaleido-launcher.ico
-; A real .ico is what Settings → Apps uses. {uninstallexe} and the DLL often show a blank tile.
-UninstallDisplayIcon={app}\obs-plugins\64bit\kaleido-launcher.ico
+; Settings → Apps reads an .exe icon reliably. 1.0.7 showed the logo this way.
+UninstallDisplayIcon={uninstallexe}
+DisableDirPage=no
 OutputDir=output
 OutputBaseFilename=KaleidoLauncher_v{#MyAppVersion}_Installer
 Compression=lzma
@@ -141,8 +142,8 @@ begin
     RegQueryStringValue(RootKey, Key, 'DisplayName', DisplayName);
     if not IsCPackNsisDuplicate(Names[I], DisplayName) then
       Continue;
-    if RegQueryStringValue(RootKey, Key, 'UninstallString', UninstallString) then
-      SilentUninstall(UninstallString);
+    { Do not run the NSIS uninstaller. CPack may have targeted the OBS folder, and
+      its uninstall would delete kaleido-launcher.dll before this installer copies it. }
     if RegKeyExists(RootKey, Key) then
       RegDeleteKeyIncludingSubkeys(RootKey, Key);
   end;
