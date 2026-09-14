@@ -4,7 +4,7 @@
 ; it would create a second Apps & Features row instead of upgrading.
 AppId=Kaleido Launcher
 AppName=Kaleido Launcher
-AppVersion=1.0.8
+AppVersion=1.0.9
 AppPublisher=KaleidoVR
 AppPublisherURL=https://kalivr.com
 AppCopyright=Copyright (C) 2026 KaleidoVR
@@ -23,7 +23,7 @@ CloseApplications=yes
 SetupIconFile=logo\kaleido-launcher.ico
 UninstallDisplayIcon={uninstallexe}
 OutputDir=output
-OutputBaseFilename=KaleidoLauncher_v1.0.8_Installer
+OutputBaseFilename=KaleidoLauncher_v1.0.9_Installer
 Compression=lzma
 SolidCompression=yes
 
