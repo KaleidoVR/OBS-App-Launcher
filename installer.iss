@@ -14,7 +14,6 @@ AppPublisherURL=https://kalivr.com
 AppCopyright=Copyright (C) 2026 KaleidoVR
 ; Apps & Features should show this name and let Windows list AppVersion beside it.
 UninstallDisplayName={#MyAppName}
-UsePreviousAppName=no
 VersionInfoProductName={#MyAppName}
 VersionInfoVersion={#MyAppVersion}
 DefaultDirName={commonpf64}\obs-studio
