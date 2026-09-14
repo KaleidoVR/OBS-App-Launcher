@@ -113,11 +113,10 @@ set(CPACK_SYSTEM_NAME "win64")
 
 set(CPACK_ARCHIVE_COMPONENT_INSTALL OFF)
 
-# NSIS Specific Settings
-set(CPACK_NSIS_DISPLAY_NAME "Kaleido Launcher for OBS")
-set(CPACK_NSIS_PACKAGE_NAME "Kaleido Launcher")
-set(CPACK_NSIS_REQUEST_EXECUTION_LEVEL "admin")
-set(CPACK_NSIS_INSTALLED_ICON_NAME "obs-plugins\\\\64bit\\\\kaleido-launcher.dll")
+# ZIP only. CPack NSIS used a different Apps & Features identity ("Kaleido Launcher
+# for OBS") than the Inno installer (AppId Kaleido Launcher), so installing both
+# created duplicate rows and dropped the logo. The Windows installer is installer.iss.
+set(CPACK_GENERATOR "ZIP")
 
 # Metadata
 set(CPACK_PACKAGE_VENDOR "KaleidoVR")
