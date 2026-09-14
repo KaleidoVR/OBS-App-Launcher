@@ -1,0 +1,3 @@
+Kaleido Launcher 1.0.9
+
+Close Apps and auto-close now shut down the apps in the current profile, including ones that were already running. Switching OBS scene collections reloads an open launcher window instead of keeping the old list. Changing profiles saves the previous app list first. Default Profile cannot be deleted.
