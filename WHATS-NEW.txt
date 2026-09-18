@@ -1,3 +1,6 @@
-Kaleido Launcher 1.0.10
+What's new
 
-The window footer shows the plugin version next to the name. The installer keeps a single Kaleido Launcher entry in Apps & Features, with the logo, and will not let an old NSIS uninstall remove the plugin.
+1.0.10
+I put the version next to Kaleido Launcher at the bottom of the window.
+The installer keeps one Kaleido Launcher row in Apps & Features, with the logo. An old NSIS uninstall does not delete the plugin when this installer runs.
+UI — Footer: Kaleido Launcher 1.0.10 — https://kalivr.com
