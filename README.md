@@ -13,23 +13,25 @@ Pick a profile for that setup. Add the programs. Start them minimized if you wan
 </p>
 
 - Windows x64
-- Designed for **OBS Studio 32.2.2**
+- For **OBS Studio 33.0.0** and later
 - Window stays **460×760**
 
 ## Install
 
+This build is for [OBS Studio 33](https://github.com/obsproject/obs-studio/releases/tag/33.0.0) and later. OBS 33 moved third-party plugins out of Program Files.
+
 1. Download the latest installer or ZIP from [Releases](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest).
-2. **Installer** — run [KaleidoLauncher_v1.0.10_Installer.exe](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest). It installs into your 64-bit OBS folder (`C:\Program Files\obs-studio`).
-3. **ZIP** — extract [kaleido-launcher-1.0.10-win64.zip](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest) over that same OBS folder. The archive opens at `obs-plugins`.
+2. **Installer** — run [KaleidoLauncher_v1.0.11_Installer.exe](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest). It installs into `C:\ProgramData\obs-studio\plugins\kaleido-launcher` and removes the old copy from `C:\Program Files\obs-studio\obs-plugins\64bit`.
+3. **ZIP** — extract [kaleido-launcher-1.0.11-win64.zip](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest) over `C:\ProgramData\obs-studio\plugins`. The archive opens at `kaleido-launcher`.
 4. Restart OBS, then open **KaleidoVR → App Autostarter** in the top menu bar.
 
 A later installer upgrades the existing Kaleido Launcher Apps & Features entry instead of adding a second one.
 
 ## Requirements
 
-Windows x64 and a 64-bit OBS Studio install. I built this against **OBS Studio 32.2.2**.
+Windows x64 and a 64-bit OBS Studio **33.0.0** or later install.
 
-There is no macOS or Linux build. The DLL belongs in `obs-plugins\64bit` next to OBS itself, not under `%ProgramData%`.
+There is no macOS or Linux build. The DLL belongs in `%ProgramData%\obs-studio\plugins\kaleido-launcher`, not next to OBS in `obs-plugins\64bit`.
 
 ## Usage
 

@@ -69,11 +69,10 @@ if(TARGET plugin-support)
   target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE plugin-support)
 endif()
 
-# set_target_properties_plugin() is deliberately not used. Besides the version resource and
-# rundir copy replicated below, it installs a second copy of the plugin in the
-# %ProgramData%\obs-studio\plugins layout (<name>/bin/64bit and <name>/data). Kaleido
-# Launcher ships into the OBS program folder, so that would duplicate the whole payload in
-# every package.
+# set_target_properties_plugin() is not used. It installs <name>/bin/64bit, which OBS 33
+# treats as the legacy ProgramData layout. OBS 33+ loads
+# %ProgramData%\obs-studio\plugins\<name>\<name>.dll. The version resource and rundir copy
+# below are the pieces we still need.
 string(TIMESTAMP CURRENT_YEAR "%Y")
 configure_file(cmake/windows/resources/resource.rc.in "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.rc")
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.rc")
@@ -91,17 +90,17 @@ add_custom_command(
   VERBATIM
 )
 
-# OBS program-folder layout. Every UI string is literal English and the module never calls
-# obs_module_text(), so there are no resources to ship and no data/ tree is installed. If
-# the UI is ever localized, resources belong in data/obs-plugins/${_name} because that is
-# the only path obs_module_file() resolves.
+# OBS 33+ ProgramData layout. Every UI string is literal English and the module never
+# calls obs_module_text(), so there are no resources to ship and no data/ tree is
+# installed. If the UI is ever localized, resources belong in
+# %ProgramData%\obs-studio\plugins\${_name}\data.
 install(TARGETS ${CMAKE_PROJECT_NAME}
-  RUNTIME DESTINATION obs-plugins/64bit
-  LIBRARY DESTINATION obs-plugins/64bit
+  RUNTIME DESTINATION ${_name}
+  LIBRARY DESTINATION ${_name}
 )
 
 install(FILES $<TARGET_PDB_FILE:${CMAKE_PROJECT_NAME}>
-  DESTINATION obs-plugins/64bit
+  DESTINATION ${_name}
   OPTIONAL
 )
 
@@ -129,7 +128,7 @@ set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/CPackOptions.cmake")
 # CMAKE_INSTALL_PREFIX defaults to "$ENV{ALLUSERSPROFILE}/obs-studio/plugins", which keeps
 # the native backslash from ALLUSERSPROFILE. CPack copies that verbatim into
 # CPackConfig.cmake, where "\P" is an invalid escape that breaks every generator. Package
-# relative to the archive root so the payload lands at obs-plugins/64bit instead.
+# relative to the archive root so the payload lands at kaleido-launcher/.
 set(CPACK_PACKAGING_INSTALL_PREFIX "/")
 set(CPACK_INSTALL_PREFIX "/")
 

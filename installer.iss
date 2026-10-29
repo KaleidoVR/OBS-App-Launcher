@@ -1,5 +1,5 @@
 #define MyAppName "Kaleido Launcher"
-#define MyAppVersion "1.0.10"
+#define MyAppVersion "1.0.11"
 
 [Setup]
 ; Same identity as the already-shipped 1.0.0 (which omitted AppId, so Inno
@@ -16,15 +16,19 @@ AppCopyright=Copyright (C) 2026 KaleidoVR
 UninstallDisplayName={#MyAppName}
 VersionInfoProductName={#MyAppName}
 VersionInfoVersion={#MyAppVersion}
-DefaultDirName={commonpf64}\obs-studio
+; OBS 33+ loads third-party plugins from ProgramData, not Program Files.
+; https://github.com/obsproject/obs-studio/releases/tag/33.0.0
+DefaultDirName={commonappdata}\obs-studio\plugins\kaleido-launcher
 DefaultGroupName={#MyAppName}
 PrivilegesRequired=admin
-; Without this the installer runs in 32-bit mode and {commonpf64} would be unavailable,
-; landing the plugin in Program Files (x86) where 64-bit OBS never looks for it.
+; Without this the installer runs in 32-bit mode and {commonappdata} / {commonpf64}
+; helpers would not match a 64-bit OBS install.
 ArchitecturesInstallIn64BitMode=x64compatible
 ArchitecturesAllowed=x64compatible
-UsePreviousAppDir=yes
-; OBS is already installed at DefaultDirName. The default "Folder Exists"
+; 1.0.10 and earlier installed into Program Files\obs-studio. Reusing that folder
+; would keep the plugin in the OBS 33 legacy path.
+UsePreviousAppDir=no
+; OBS 33 already created plugins\ under ProgramData. The default "Folder Exists"
 ; prompt is noise — installing into that folder is the entire point.
 DirExistsWarning=no
 CloseApplications=yes
@@ -39,10 +43,16 @@ SolidCompression=yes
 
 [Files]
 ; The plugin ships no locale resources. The icon is only for the Apps & Features tile.
-Source: "build_x64\Release\kaleido-launcher.dll"; DestDir: "{app}\obs-plugins\64bit"; Flags: ignoreversion
-Source: "logo\kaleido-launcher.ico"; DestDir: "{app}\obs-plugins\64bit"; Flags: ignoreversion
+Source: "build_x64\Release\kaleido-launcher.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "logo\kaleido-launcher.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; Debug symbols, so crash reports from users are actionable
-Source: "build_x64\Release\kaleido-launcher.pdb"; DestDir: "{app}\obs-plugins\64bit"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "build_x64\Release\kaleido-launcher.pdb"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+
+[InstallDelete]
+; OBS 33 skips a ProgramData copy if the same plugin is still in Program Files.
+Type: files; Name: "{commonpf64}\obs-studio\obs-plugins\64bit\kaleido-launcher.dll"
+Type: files; Name: "{commonpf64}\obs-studio\obs-plugins\64bit\kaleido-launcher.pdb"
+Type: files; Name: "{commonpf64}\obs-studio\obs-plugins\64bit\kaleido-launcher.ico"
 
 [Icons]
 ; Optional shortcut or uninstaller reference
