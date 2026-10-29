@@ -1,5 +1,5 @@
 #define MyAppName "Kaleido Launcher"
-#define MyAppVersion "1.0.11"
+#define MyAppVersion "1.0.12"
 
 [Setup]
 ; Same identity as the already-shipped 1.0.0 (which omitted AppId, so Inno

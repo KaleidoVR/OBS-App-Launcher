@@ -21,8 +21,8 @@ Pick a profile for that setup. Add the programs. Start them minimized if you wan
 This build is for [OBS Studio 33](https://github.com/obsproject/obs-studio/releases/tag/33.0.0) and later. OBS 33 moved third-party plugins out of Program Files.
 
 1. Download the latest installer or ZIP from [Releases](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest).
-2. **Installer** — run [KaleidoLauncher_v1.0.11_Installer.exe](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest). It installs into `C:\ProgramData\obs-studio\plugins\kaleido-launcher` and removes the old copy from `C:\Program Files\obs-studio\obs-plugins\64bit`.
-3. **ZIP** — extract [kaleido-launcher-1.0.11-win64.zip](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest) over `C:\ProgramData\obs-studio\plugins`. The archive opens at `kaleido-launcher`.
+2. **Installer** — run [KaleidoLauncher_v1.0.12_Installer.exe](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest). It installs into `C:\ProgramData\obs-studio\plugins\kaleido-launcher` and removes the old copy from `C:\Program Files\obs-studio\obs-plugins\64bit`.
+3. **ZIP** — extract [kaleido-launcher-1.0.12-win64.zip](https://github.com/KaleidoVR/OBS-App-Launcher/releases/latest) over `C:\ProgramData\obs-studio\plugins`. The archive opens at `kaleido-launcher`.
 4. Restart OBS, then open **KaleidoVR → App Autostarter** in the top menu bar.
 
 A later installer upgrades the existing Kaleido Launcher Apps & Features entry instead of adding a second one.

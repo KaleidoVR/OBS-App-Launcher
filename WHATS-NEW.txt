@@ -1,5 +1,9 @@
 What's new
 
+1.0.12
+I rebuilt this against OBS Studio 33 and Qt 6.11.1, the same Qt OBS 33 loads.
+UI — Footer: Kaleido Launcher 1.0.12 — https://kalivr.com
+
 1.0.11
 This build is for OBS Studio 33 and later.
 I moved the plugin into OBS 33's new folder: C:\ProgramData\obs-studio\plugins\kaleido-launcher. The installer and the ZIP put kaleido-launcher.dll there. The installer removes the old copy from Program Files so OBS 33 does not load a Legacy one.
